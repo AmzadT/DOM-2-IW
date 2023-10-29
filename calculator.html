@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+        <title>Masai Calculator</title>
+        <style>
+
+            h1{
+                color: teal;
+                text-align: center;
+                font-size: 50px;
+            }
+
+            #main{
+                height: 440px;
+                width: 30%;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                margin: auto;
+                padding-top: 50px;
+                margin-top: 40px;
+               
+                
+            }
+
+            #display{
+                width: 75%;
+                height: 50px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                margin: auto;
+                border-radius: 5px;
+                cursor:text;
+                font-size: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 700;
+            }
+
+            #digits-box{
+                width: 75%;
+                height: 330px;
+                margin: auto;
+                margin-top: 20px;
+                grid-template-columns: repeat(4,1fr);
+                grid-template-rows: repeat(4,65px);
+                display: grid;
+                gap: 10px;
+                padding-top: 10px;
+                cursor: pointer;
+                
+            }
+
+            #digits-box > div{
+               box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+               border-radius: 10px;
+               align-items: center;
+               justify-content: center;
+               display: flex;
+               font-weight: bold;
+               font-size: 30px;
+            }
+
+            .black{
+                background-color: black;
+                color: white;
+            }
+            .black:hover{
+                background-color:white;
+                color: black;
+            }
+
+            .red{
+                background-color: orangered;
+                color: white;
+            }
+            .red:hover{
+                background-color: red;
+            }
+
+            .number:hover{
+                background-color: black;
+                color: white;
+            }
+
+        </style>
+</head>
+<body>
+   
+    <h1>Masai Calculator</h1>
+    <div id="main">
+        <div id="display"></div>
+        <div id="digits-box">
+            <div class="number">1</div>
+            <div class="number">2</div>
+            <div class="number">3</div>
+            <div class="black">+</div>
+            <div class="number">4</div>
+            <div class="number">5</div>
+            <div class="number">6</div>
+            <div class="black">-</div>
+            <div class="number">7</div>
+            <div class="number">8</div>
+            <div class="number">9</div>
+            <div class="black">*</div>
+            <div class="red">C</div>
+            <div class="number">0</div>
+            <div class="black">=</div>
+            <div class="black">/</div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<script>
+    var keybord = document.querySelectorAll("#digits-box > div")
+    var bag = document.querySelector("#display")
+
+    for(var i =0; i<keybord.length; i++)
+    {
+        keybord[i].addEventListener("click",clicked)
+    }
+
+    function clicked()
+    {
+       var result = event.target.innerText
+
+       switch(result)
+       {
+          case "C" : bag.innerText = ""
+          break
+
+          case "=" : 
+
+         if (bag.innerText.trim() == "") 
+            {
+               bag.innerText = "=";
+            } 
+            else 
+            {
+               bag.innerText = eval(bag.innerText);
+            }
+            break;
+
+          default :
+          bag.innerText += result
+       }
+    }
+</script>
